@@ -1,0 +1,21 @@
+{# context: computer object #}
+{% load static %}
+
+
+{% with dt_since=computer.status_set.latest.created|timesince %}
+
+    <!-- {{ dt_since }} -->
+    {% if "0 minutes" == dt_since %}
+        {# green #}
+        <img border="0" src="{% static 'admin/img/icon_success.gif' %}">
+    {% else %}
+        {% if "hour" not in dt_since %}
+            {# yellow #}
+            <img border="0" src="{% static 'admin/img/icon_alert.gif' %}">
+        {% else %}
+            {# red #}
+            <img border="0" src="{% static 'admin/img/icon_error.gif' %}">
+        {% endif %}
+    {% endif %}
+
+{% endwith %}

@@ -1,0 +1,17 @@
+{% extends 'site_base.html' %}
+
+{% block page_title %}{{ block.super }}{% block head_subtitle %}IT Management{% endblock %}{% endblock %}
+
+{% block page_content_header %}{% block title %}IT Management{% endblock %}{% endblock %}
+        
+{% block page_content_body %}
+    {% block itmgmt_content %}
+        <p>
+            IT Management Content.
+        </p>
+    {% endblock %}            
+
+    {% block itmgmt_extra_content %}
+    {% endblock %}
+{% endblock %}
+

@@ -1,0 +1,18 @@
+{% extends 'site_base.html' %}
+
+{% block head_title %}{{ block.super }} - {% block head_subtitle %}My app{% endblock %}{% endblock %}
+
+{% block content %}
+    <section>
+        <h1>{% block title %}MyApp Title{% endblock %}</h1>
+        
+        {% block myapp_content %}
+            <p>
+                MyApp Content.
+            </p>
+        {% endblock %}            
+    </section>
+    {% block myapp_extra_content %}
+    {% endblock %}
+{% endblock %}
+

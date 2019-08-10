@@ -1,0 +1,14 @@
+id
+common_name
+hardware
+person
+room
+operating_system
+asset
+processor
+ram
+harddrive
+manufacturing_year
+get_primary_net_iface.mac_address
+get_primary_net_iface.ip_address.hostname
+get_primary_net_iface.ip_address.number

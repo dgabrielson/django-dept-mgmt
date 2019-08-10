@@ -1,0 +1,67 @@
+{% extends 'admin/app_index.html' %}
+{% load i18n static %}
+
+{# ########################################################## #}
+
+{% block sidebar %}
+{{ block.super }}
+
+<div id="content-related">
+    <div class="module">
+        <h2>{% trans 'Application Links' %}</h2>
+
+        {% comment %}
+        <h3>{% trans 'Forms' %}</h3>
+
+            <ul class="actionlist">
+                <li class="changelink">
+                    <a href="{% static 'office_mgmt/pdf/asset_disposal-2010-03mar.pdf' %}">
+                        {% trans 'Capital Asset disposal' %}
+                    </a>
+                </li>
+                <li class="changelink">
+                    <a href="{% static 'office_mgmt/pdf/non-capital-asset-form-2015-03mar.pdf' %}">
+                        {% trans 'Non-Capital Asset disposal' %}
+                    </a>
+                </li>
+                <li class="changelink">
+                    <a href="{% static 'office_mgmt/pdf/offsite_equip.pdf' %}">
+                        {% trans 'Offsite capital equipment' %}
+                    </a>
+                </li>
+            </ul>
+        {% endcomment %}
+
+        {% comment %}
+        <h3>{% trans 'Quick links' %}</h3>
+
+            <ul class="actionlist">
+                <li class="changelink">
+                    <a href="{% url 'admin:office_mgmt_loanrecord_changelist' %}?loan-status=outstanding&loan_type__exact=s">
+                        {% trans 'Outstanding loans (short term)' %}
+                    </a>
+                </li>
+            </ul>
+        {% endcomment %}
+
+        <h3>{% trans 'UofM links' %}</h3>
+
+            <ul class="actionlist">
+                <li class="addlink">
+                    <a href="http://umanitoba.ca/computing/ist/systems/pccomdcom.html">
+                        {% trans 'Personal Computers Commissioning and Decommissioning' %} &rarr;
+                    </a>
+                </li>
+                <li class="addlink">
+                    <a href="https://ipam.cc.umanitoba.ca/">
+                        {% trans 'InfoBlox Network Management' %} &rarr;
+                    </a>
+                </li>
+            </ul>
+
+    </div>
+</div>
+
+{% endblock %}
+
+{# ########################################################## #}

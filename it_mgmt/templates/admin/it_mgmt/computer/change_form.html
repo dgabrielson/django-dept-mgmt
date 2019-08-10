@@ -1,0 +1,25 @@
+{% extends "admin/change_form.html" %}
+{% load i18n %}
+
+{% block object-tools-items %}
+    {% if perms.office_mgmt.change_asset and original.asset %}
+        <li>
+            <a href="{% url 'admin:office_mgmt_asset_change' original.asset.pk %}" class="viewsitelink">
+                Asset Record
+            </a>
+        </li>
+    {% endif %}
+{{ block.super }}
+{% endblock %}
+
+{% block extrahead %}
+<script
+  src="https://code.jquery.com/jquery-2.2.4.min.js"
+  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+  crossorigin="anonymous"></script>
+{{ block.super }}
+{% endblock %}
+
+{% block admin_change_form_document_ready %}
+{{ block.super }}
+{% endblock %}

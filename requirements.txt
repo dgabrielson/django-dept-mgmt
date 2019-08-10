@@ -1,0 +1,8 @@
+python-dateutil
+netaddr
+djangorestframework
+coreapi
+django_select2
+
+django-dept-directory
+

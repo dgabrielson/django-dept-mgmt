@@ -1,0 +1,12 @@
+include requirements.txt
+include README.rst
+include LICENSE.txt
+#recursive-include it_mgmt/static *
+recursive-include it_mgmt/templates *
+recursive-include office_mgmt/static *
+recursive-include office_mgmt/templates *
+
+# added by check_manifest.py
+recursive-include api_clients *.sh
+recursive-include scripts *.py
+recursive-include scripts *.sh

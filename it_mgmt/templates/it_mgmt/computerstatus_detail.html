@@ -1,0 +1,73 @@
+{% extends 'it_mgmt/base.html' %}
+
+{# ################################################# #}
+
+{% block head_subtitle %}Computer Status{% endblock %}
+{% block title %}Computer Status{% endblock %}
+
+{# ################################################# #}
+
+{% block itmgmt_content %}
+
+<p>
+    <a href="{% url 'it_mgmt-computer-status-list' %}">
+        &larr; Back to the status list
+    </a>
+</p>
+<p>
+    Status as of 
+    <strong>
+        {% now "DATETIME_FORMAT" %}
+    </strong>.
+</p>
+<p>
+    <a href="{% url 'it_mgmt-computer-status-detail' pk=computer.pk %}">
+        &rarr; Refresh this page
+    </a> 
+</p>
+
+<h2 style="vertical-align: top;">
+    {% include 'it_mgmt/includes/computer_status_light.html' %}
+    {{ computer.common_name }}
+</h2>
+
+{% with dt_since=computer.status_set.latest.created|timesince %}
+    {% if dt_since != '0 minutes' %}
+        <p>
+            <strong>
+                Last update:
+            </strong>
+             {{ dt_since }} ago.
+        </p>
+    {% endif %}
+{% endwith %}
+
+<table>
+    {% for status in computer.status_set.active.latest_by_key %}
+        <tr>
+            <th>
+                {{ status.key }}
+            </th>
+            <td>
+                {% if status.key.slug == 'system_start_dt' %}
+                    {{ status.display|timesince }}
+                {% elif status.key.data_type == 'p' %}
+                    {{ status.display }}%
+                {% elif status.key.data_type == 'du' %}
+                    {{ status.display.label }}
+                    </td>
+                    <td>
+                    {{ status.display.amount }}% 
+                {% elif status.key.data_type == 'm' %}
+                    {{ status.display|filesizeformat}}
+                {% else %}
+                    {{ status.display }}
+                {% endif %}
+            </td>
+        </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}
+
+{# ################################################# #}

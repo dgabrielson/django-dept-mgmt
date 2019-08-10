@@ -1,0 +1,44 @@
+{% extends 'it_mgmt/base.html' %}
+
+{# ################################################# #}
+
+{% block head_subtitle %}Computer Status{% endblock %}
+{% block title %}Computer Status{% endblock %}
+
+{# ################################################# #}
+
+{% block itmgmt_content %}
+
+<p>
+    Status as of 
+    <strong>
+        {% now "DATETIME_FORMAT" %}
+    </strong>.
+</p>
+<p>
+    <a href="{% url 'it_mgmt-computer-status-list' %}">
+        &rarr; Refresh this page
+    </a> 
+</p>
+
+<table>
+    {% for computer in computer_list %}
+        <tr>
+            <td style="vertical-align: middle;">
+                {% include 'it_mgmt/includes/computer_status_light.html' %}
+            </td>
+            <td style="vertical-align: middle;">
+                <a href="{% url 'it_mgmt-computer-status-detail' pk=computer.pk %}">
+                    {{ computer }}
+                </a>
+            </td>
+            <td style="vertical-align: middle;">
+                {% include 'it_mgmt/includes/computer_status_action_required.html' %}
+            </td>
+        </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}
+
+{# ################################################# #}

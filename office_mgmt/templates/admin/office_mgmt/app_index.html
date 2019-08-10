@@ -1,0 +1,97 @@
+{% extends 'admin/app_index.html' %}
+{% load i18n static %}
+
+{# ########################################################## #}
+
+{% block sidebar %}
+{{ block.super }}
+
+<div id="content-related">
+    <div class="module">
+        <h2>{% trans 'Application Links' %}</h2>
+        <h3>{% trans 'Forms' %}</h3>
+
+            <ul class="actionlist">
+                <li class="changelink">
+                    <a href="{% static 'office_mgmt/pdf/asset_disposal-2010-03mar.pdf' %}">
+                        {% trans 'Capital Asset disposal' %}
+                    </a>
+                </li>
+                <li class="changelink">
+                    <a href="{% static 'office_mgmt/pdf/non-capital-asset-form-2015-03mar.pdf' %}">
+                        {% trans 'Non-Capital Asset disposal' %}
+                    </a>
+                </li>
+                <li class="changelink">
+                    <a href="{% static 'office_mgmt/pdf/offsite_equip.pdf' %}">
+                        {% trans 'Offsite capital equipment' %}
+                    </a>
+                </li>
+            </ul>
+
+        <h3>{% trans 'Quick links' %}</h3>
+
+            <ul class="actionlist">
+                <li class="changelink">
+                    <a href="{% url 'admin:office_mgmt_loanrecord_changelist' %}?loan-status=outstanding&loan_type__exact=s">
+                        {% trans 'Outstanding loans (short term)' %}
+                    </a>
+                </li>
+            </ul>
+
+        <h3>{% trans 'UofM links' %}</h3>
+
+            <ul class="actionlist">
+                <li class="addlink">
+                    <a href="http://umanitoba.ca/admin/financial_services/cams/">
+                        {% trans 'Asset Management' %} &rarr;
+                    </a>
+                </li>
+                <li class="addlink">
+                    <a href="http://umanitoba.ca/computing/renewal/fm/media/AcctHierarchyExpenditures.htm">
+                        {% trans 'Accounts for EPIC/FAST' %} &rarr;
+                    </a>
+                </li>
+                <li class="addlink">
+                    <a href="http://umanitoba.ca/jump">
+                        {% trans 'JUMP' %} &rarr;
+                    </a>
+                </li>
+            </ul>
+
+        <h3>{% trans 'Scheduling' %}</h3>
+
+            <ul class="actionlist">
+                <li class="addlink">
+                    <a href="http://astraprod.cc.umanitoba.ca/Astprod/Calendars/default.aspx">
+                        {% trans 'Ad Astra' %} &rarr;
+                    </a>
+                </li>
+            </ul>
+
+
+        <h3>{% trans 'Finance' %}</h3>
+
+            <ul class="actionlist">
+                <li class="addlink">
+                    <a href="http://umanitoba.procurement.ariba.com/">
+                        {% trans 'EPIC' %} &rarr;
+                    </a>
+                </li>
+                <li class="addlink">
+                    <a href="https://cas.portal.umanitoba.ca/casConnect/concur">
+                        {% trans 'Concur' %} &rarr;
+                    </a>
+                </li>
+                <li class="addlink">
+                    <a href="http://umanitoba.ca/admin/financial_services/">
+                        {% trans 'Financial Services' %} &rarr;
+                    </a>
+                </li>
+            </ul>
+    </div>
+</div>
+
+{% endblock %}
+
+{# ########################################################## #}

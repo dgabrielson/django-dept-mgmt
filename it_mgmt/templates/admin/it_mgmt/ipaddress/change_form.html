@@ -1,0 +1,17 @@
+{% extends "admin/change_form.html" %}
+{% load i18n %}
+
+{% block object-tools-items %}
+
+    {% if perms.it_mgmt.change_computer %}
+        {% for obj in original.networkinterface_set.active %}
+            <li>
+                <a href="{% url 'admin:it_mgmt_computer_change' obj.computer.pk %}" class="viewsitelink">
+                    Computer Record
+                </a>
+            </li>
+        {% endfor %}
+    {% endif %}
+    
+{{ block.super }}
+{% endblock %}

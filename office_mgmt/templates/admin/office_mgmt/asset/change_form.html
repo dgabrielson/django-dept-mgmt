@@ -1,0 +1,39 @@
+{% extends "admin/change_form.html" %}
+{% load i18n %}
+{% load static %}
+
+{% block object-tools-items %}
+    <li>
+        {% if original.property_number %}
+            <a href="{% url 'admin:office_mgmt_asset_disposalform' object_id %}" class="historylink">
+                Disposal Form
+            </a>
+        {% else %}
+            <a href="{% static 'office_mgmt/pdf/non-capital-asset-form-2015-03mar.pdf' %}" class="historylink">
+                Disposal Form
+            </a>
+        {% endif %}
+    </li>
+    <li>
+        <a href="{{ STATIC_URL }}office_mgmt/pdf/offsite_equip.pdf" class="historylink">
+            Offsite Form
+        </a>
+    </li>
+    {% if perms.it_mgmt.change_computer %}
+        {% url 'admin:it_mgmt_computer_from_asset' asset=original.pk as link_url %}
+        {% if link_url %}
+            <li>
+                {% if original.computer_set.count %}
+                    <a href="{{ link_url }}" class="viewsitelink"> 
+                        Computer Record
+                    </a>
+                {% else %}
+                    <a href="{{ link_url }}" class="addlink">
+                        Create Computer
+                    </a>
+                {% endif %}
+            </li>
+        {% endif %}
+    {% endif %}
+{{ block.super }}
+{% endblock %}
